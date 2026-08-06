@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | VigCraft Testing Hub</title>
+    <meta name="description" content="VigCraft Testing Hub — Enterprise AI-Powered Software Testing Platform Dashboard">
+    <link rel="stylesheet" href="/frontend/dashboard/dashboard.css">
+    <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+</head>
+<body id="dashboard-page" class="vc-dashboard" data-page="dashboard">
+
+    <a class="vc-skip-link" href="#vc-main-content">Skip to main content</a>
+
+    <!-- ===================== TOP HEADER ===================== -->
+    <header id="vc-header" class="vc-header" role="banner">
+        <div class="vc-header__left">
+            <button id="vc-sidebar-toggle" class="vc-icon-btn" type="button" aria-label="Toggle sidebar" aria-controls="vc-sidebar" aria-expanded="true">
+                <span class="vc-icon vc-icon--menu" aria-hidden="true"></span>
+            </button>
+
+            <a href="/dashboard" id="vc-logo" class="vc-logo" aria-label="VigCraft Testing Hub home">
+                <img src="/assets/images/vigcraft-logo.svg" alt="" class="vc-logo__mark" width="32" height="32">
+                <span class="vc-logo__text">VigCraft <span class="vc-logo__accent">Testing Hub</span></span>
+            </a>
+        </div>
+
+        <div class="vc-header__center">
+            <form id="vc-global-search-form" class="vc-search" role="search" action="/search" method="get">
+                <label for="vc-global-search" class="vc-sr-only">Search projects, test cases, defects</label>
+                <span class="vc-icon vc-icon--search" aria-hidden="true"></span>
+                <input
+                    type="search"
+                    id="vc-global-search"
+                    name="q"
+                    class="vc-search__input"
+                    placeholder="Search projects, test suites, test cases, defects..."
+                    autocomplete="off"
+                >
+                <button type="submit" class="vc-sr-only">Search</button>
+            </form>
+        </div>
+
+        <div class="vc-header__right">
+            <button id="vc-notifications-btn" class="vc-icon-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="vc-notifications-panel" aria-label="Notifications, 3 unread">
+                <span class="vc-icon vc-icon--bell" aria-hidden="true"></span>
+                <span id="vc-notifications-count" class="vc-badge vc-badge--danger" aria-hidden="true">3</span>
+            </button>
+
+            <div id="vc-notifications-panel" class="vc-dropdown-panel" role="region" aria-label="Notifications" hidden>
+                <div class="vc-dropdown-panel__header">
+                    <h2 class="vc-dropdown-panel__title">Notifications</h2>
+                    <button type="button" class="vc-link-btn" id="vc-mark-all-read">Mark all as read</button>
+                </div>
+                <ul id="vc-notifications-list" class="vc-notifications-list" data-source="/api/notifications">
+                    <li class="vc-notifications-list__empty">No new notifications.</li>
+                </ul>
+            </div>
+
+            <div class="vc-user-menu">
+                <button id="vc-user-menu-btn" class="vc-user-menu__trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="vc-user-menu-panel">
+                    <img src="/assets/images/default-avatar.png" alt="" class="vc-user-menu__avatar" width="32" height="32">
+                    <span class="vc-user-menu__name" id="vc-current-user-name">Loading user...</span>
+                    <span class="vc-icon vc-icon--chevron-down" aria-hidden="true"></span>
+                </button>
+
+                <div id="vc-user-menu-panel" class="vc-dropdown-panel vc-dropdown-panel--right" role="menu" aria-label="User account menu" hidden>
+                    <a href="/profile" role="menuitem" class="vc-dropdown-panel__item">My Profile</a>
+                    <a href="/account/preferences" role="menuitem" class="vc-dropdown-panel__item">Preferences</a>
+                    <a href="/account/api-keys" role="menuitem" class="vc-dropdown-panel__item">API Keys</a>
+                    <hr class="vc-dropdown-panel__divider">
+                    <a href="/logout" id="vc-user-menu-logout" role="menuitem" class="vc-dropdown-panel__item vc-dropdown-panel__item--danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="vc-shell">
+
+        <!-- ===================== LEFT SIDEBAR ===================== -->
+        <nav id="vc-sidebar" class="vc-sidebar" aria-label="Primary navigation">
+            <ul class="vc-sidebar__list">
+                <li class="vc-sidebar__item">
+                    <a href="/dashboard" id="vc-nav-dashboard" class="vc-sidebar__link vc-sidebar__link--active" aria-current="page">
+                        <span class="vc-icon vc-icon--dashboard" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="vc-sidebar__item">
+                    <a href="/projects" id="vc-nav-projects" class="vc-sidebar__link">
+                        <span class="vc-icon vc-icon--projects" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Projects</span>
+                    </a>
+                </li>
+                <li class="vc-sidebar__item">
+                    <a href="/test-suites" id="vc-nav-test-suites" class="vc-sidebar__link">
+                        <span class="vc-icon vc-icon--suites" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Test Suites</span>
+                    </a>
+                </li>
+                <li class="vc-sidebar__item">
+                    <a href="/test-cases" id="vc-nav-test-cases" class="vc-sidebar__link">
+                        <span class="vc-icon vc-icon--cases" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Test Cases</span>
+                    </a>
+                </li>
+                <li class="vc-sidebar__item">
+                    <a href="/test-executions" id="vc-nav-test-executions" class="vc-sidebar__link">
+                        <span class="vc-icon vc-icon--executions" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Test Executions</span>
+                    </a>
+                </li>
+                <li class="vc-sidebar__item">
+                    <a href="/defects" id="vc-nav-defects" class="vc-sidebar__link">
+                        <span class="vc-icon vc-icon--defects" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Defects</span>
+                    </a>
+                </li>
+                <li class="vc-sidebar__item">
+                    <a href="/ai-tools" id="vc-nav-ai-tools" class="vc-sidebar__link">
+                        <span class="vc-icon vc-icon--ai" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">AI Tools</span>
+                    </a>
+                </li>
+                <li class="vc-sidebar__item">
+                    <a href="/reports" id="vc-nav-reports" class="vc-sidebar__link">
+                        <span class="vc-icon vc-icon--reports" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Reports</span>
+                    </a>
+                </li>
+                <li class="vc-sidebar__item">
+                    <a href="/settings" id="vc-nav-settings" class="vc-sidebar__link">
+                        <span class="vc-icon vc-icon--settings" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Settings</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="vc-sidebar__list vc-sidebar__list--footer">
+                <li class="vc-sidebar__item">
+                    <a href="/logout" id="vc-nav-logout" class="vc-sidebar__link vc-sidebar__link--logout">
+                        <span class="vc-icon vc-icon--logout" aria-hidden="true"></span>
+                        <span class="vc-sidebar__label">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- ===================== MAIN CONTENT ===================== -->
+        <main id="vc-main-content" class="vc-main" tabindex="-1">
+
+            <!-- Welcome Section -->
+            <section id="vc-welcome-section" class="vc-welcome" aria-labelledby="vc-welcome-heading">
+                <div class="vc-welcome__text">
+                    <h1 id="vc-welcome-heading" class="vc-welcome__heading">
+                        Welcome back, <span id="vc-welcome-username">User</span>
+                    </h1>
+                    <p id="vc-welcome-subtext" class="vc-welcome__subtext">
+                        Here's what's happening across your testing projects today.
+                    </p>
+                </div>
+                <div class="vc-welcome__meta">
+                    <span id="vc-current-date" class="vc-welcome__date" data-live="date"></span>
+                </div>
+            </section>
+
+            <!-- Statistics Cards -->
+            <section id="vc-stats-section" class="vc-stats" aria-label="Key testing statistics">
+                <div class="vc-stats__grid" id="vc-stats-grid" data-source="/api/dashboard/stats">
+
+                    <article class="vc-stat-card" id="vc-stat-total-projects" data-metric="total-projects">
+                        <div class="vc-stat-card__icon vc-stat-card__icon--projects" aria-hidden="true"></div>
+                        <div class="vc-stat-card__body">
+                            <p class="vc-stat-card__label">Total Projects</p>
+                            <p class="vc-stat-card__value" id="vc-stat-total-projects-value" aria-live="polite">--</p>
+                            <p class="vc-stat-card__trend" id="vc-stat-total-projects-trend"></p>
+                        </div>
+                    </article>
+
+                    <article class="vc-stat-card" id="vc-stat-test-suites" data-metric="test-suites">
+                        <div class="vc-stat-card__icon vc-stat-card__icon--suites" aria-hidden="true"></div>
+                        <div class="vc-stat-card__body">
+                            <p class="vc-stat-card__label">Test Suites</p>
+                            <p class="vc-stat-card__value" id="vc-stat-test-suites-value" aria-live="polite">--</p>
+                            <p class="vc-stat-card__trend" id="vc-stat-test-suites-trend"></p>
+                        </div>
+                    </article>
+
+                    <article class="vc-stat-card" id="vc-stat-test-cases" data-metric="test-cases">
+                        <div class="vc-stat-card__icon vc-stat-card__icon--cases" aria-hidden="true"></div>
+                        <div class="vc-stat-card__body">
+                            <p class="vc-stat-card__label">Test Cases</p>
+                            <p class="vc-stat-card__value" id="vc-stat-test-cases-value" aria-live="polite">--</p>
+                            <p class="vc-stat-card__trend" id="vc-stat-test-cases-trend"></p>
+                        </div>
+                    </article>
+
+                    <article class="vc-stat-card" id="vc-stat-executions" data-metric="executions">
+                        <div class="vc-stat-card__icon vc-stat-card__icon--executions" aria-hidden="true"></div>
+                        <div class="vc-stat-card__body">
+                            <p class="vc-stat-card__label">Executions</p>
+                            <p class="vc-stat-card__value" id="vc-stat-executions-value" aria-live="polite">--</p>
+                            <p class="vc-stat-card__trend" id="vc-stat-executions-trend"></p>
+                        </div>
+                    </article>
+
+                    <article class="vc-stat-card" id="vc-stat-defects" data-metric="defects">
+                        <div class="vc-stat-card__icon vc-stat-card__icon--defects" aria-hidden="true"></div>
+                        <div class="vc-stat-card__body">
+                            <p class="vc-stat-card__label">Defects</p>
+                            <p class="vc-stat-card__value" id="vc-stat-defects-value" aria-live="polite">--</p>
+                            <p class="vc-stat-card__trend" id="vc-stat-defects-trend"></p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section id="vc-quick-actions-section" class="vc-quick-actions" aria-labelledby="vc-quick-actions-heading">
+                <h2 id="vc-quick-actions-heading" class="vc-section-heading">Quick Actions</h2>
+                <div class="vc-quick-actions__grid" id="vc-quick-actions-grid">
+                    <button type="button" id="vc-action-new-project" class="vc-quick-action-btn" data-action="new-project">
+                        <span class="vc-icon vc-icon--plus" aria-hidden="true"></span>
+                        <span>New Project</span>
+                    </button>
+                    <button type="button" id="vc-action-new-test-suite" class="vc-quick-action-btn" data-action="new-test-suite">
+                        <span class="vc-icon vc-icon--plus" aria-hidden="true"></span>
+                        <span>New Test Suite</span>
+                    </button>
+                    <button type="button" id="vc-action-new-test-case" class="vc-quick-action-btn" data-action="new-test-case">
+                        <span class="vc-icon vc-icon--plus" aria-hidden="true"></span>
+                        <span>New Test Case</span>
+                    </button>
+                    <button type="button" id="vc-action-run-execution" class="vc-quick-action-btn" data-action="run-execution">
+                        <span class="vc-icon vc-icon--play" aria-hidden="true"></span>
+                        <span>Run Execution</span>
+                    </button>
+                    <button type="button" id="vc-action-report-defect" class="vc-quick-action-btn" data-action="report-defect">
+                        <span class="vc-icon vc-icon--flag" aria-hidden="true"></span>
+                        <span>Report Defect</span>
+                    </button>
+                    <button type="button" id="vc-action-ai-generate-tests" class="vc-quick-action-btn vc-quick-action-btn--ai" data-action="ai-generate-tests">
+                        <span class="vc-icon vc-icon--ai" aria-hidden="true"></span>
+                        <span>AI Generate Tests</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Two-column region: Recent Activity + Execution Status -->
+            <div class="vc-grid-two-col">
+
+                <!-- Recent Activity -->
+                <section id="vc-recent-activity-section" class="vc-panel" aria-labelledby="vc-recent-activity-heading">
+                    <div class="vc-panel__header">
+                        <h2 id="vc-recent-activity-heading" class="vc-section-heading">Recent Activity</h2>
+                        <a href="/activity" class="vc-link-btn" id="vc-view-all-activity">View all</a>
+                    </div>
+                    <ul id="vc-recent-activity-list" class="vc-activity-list" data-source="/api/dashboard/activity" aria-live="polite">
+                        <li class="vc-activity-list__empty">No recent activity to display.</li>
+                    </ul>
+                </section>
+
+                <!-- Execution Status Widget -->
+                <section id="vc-execution-status-section" class="vc-panel" aria-labelledby="vc-execution-status-heading">
+                    <div class="vc-panel__header">
+                        <h2 id="vc-execution-status-heading" class="vc-section-heading">Execution Status</h2>
+                        <a href="/test-executions" class="vc-link-btn" id="vc-view-all-executions">View all</a>
+                    </div>
+                    <div id="vc-execution-status-widget" class="vc-execution-status" data-source="/api/dashboard/execution-status">
+                        <ul class="vc-execution-status__legend" id="vc-execution-status-legend">
+                            <li class="vc-execution-status__legend-item" data-status="passed">
+                                <span class="vc-status-dot vc-status-dot--success" aria-hidden="true"></span>
+                                <span class="vc-execution-status__label">Passed</span>
+                                <span class="vc-execution-status__value" id="vc-execution-passed-value">--</span>
+                            </li>
+                            <li class="vc-execution-status__legend-item" data-status="failed">
+                                <span class="vc-status-dot vc-status-dot--danger" aria-hidden="true"></span>
+                                <span class="vc-execution-status__label">Failed</span>
+                                <span class="vc-execution-status__value" id="vc-execution-failed-value">--</span>
+                            </li>
+                            <li class="vc-execution-status__legend-item" data-status="blocked">
+                                <span class="vc-status-dot vc-status-dot--warning" aria-hidden="true"></span>
+                                <span class="vc-execution-status__label">Blocked</span>
+                                <span class="vc-execution-status__value" id="vc-execution-blocked-value">--</span>
+                            </li>
+                            <li class="vc-execution-status__legend-item" data-status="in-progress">
+                                <span class="vc-status-dot vc-status-dot--info" aria-hidden="true"></span>
+                                <span class="vc-execution-status__label">In Progress</span>
+                                <span class="vc-execution-status__value" id="vc-execution-in-progress-value">--</span>
+                            </li>
+                        </ul>
+                        <div id="vc-execution-status-chart" class="vc-execution-status__chart" role="img" aria-label="Execution status distribution chart"></div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Latest Projects Table -->
+            <section id="vc-latest-projects-section" class="vc-panel" aria-labelledby="vc-latest-projects-heading">
+                <div class="vc-panel__header">
+                    <h2 id="vc-latest-projects-heading" class="vc-section-heading">Latest Projects</h2>
+                    <a href="/projects" class="vc-link-btn" id="vc-view-all-projects">View all</a>
+                </div>
+                <div class="vc-table-wrapper">
+                    <table id="vc-latest-projects-table" class="vc-table" data-source="/api/dashboard/latest-projects">
+                        <caption class="vc-sr-only">Latest projects with status and owner information</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Project Name</th>
+                                <th scope="col">Owner</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Test Cases</th>
+                                <th scope="col">Last Updated</th>
+                                <th scope="col"><span class="vc-sr-only">Actions</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="vc-latest-projects-tbody">
+                            <tr id="vc-latest-projects-empty-row">
+                                <td colspan="6">No projects available yet.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Defect Summary Widget -->
+            <section id="vc-defect-summary-section" class="vc-panel" aria-labelledby="vc-defect-summary-heading">
+                <div class="vc-panel__header">
+                    <h2 id="vc-defect-summary-heading" class="vc-section-heading">Defect Summary</h2>
+                    <a href="/defects" class="vc-link-btn" id="vc-view-all-defects">View all</a>
+                </div>
+                <div id="vc-defect-summary-widget" class="vc-defect-summary" data-source="/api/dashboard/defect-summary">
+                    <ul class="vc-defect-summary__list" id="vc-defect-summary-list">
+                        <li class="vc-defect-summary__item" data-severity="critical">
+                            <span class="vc-status-dot vc-status-dot--danger" aria-hidden="true"></span>
+                            <span class="vc-defect-summary__label">Critical</span>
+                            <span class="vc-defect-summary__value" id="vc-defect-critical-value">--</span>
+                        </li>
+                        <li class="vc-defect-summary__item" data-severity="high">
+                            <span class="vc-status-dot vc-status-dot--warning" aria-hidden="true"></span>
+                            <span class="vc-defect-summary__label">High</span>
+                            <span class="vc-defect-summary__value" id="vc-defect-high-value">--</span>
+                        </li>
+                        <li class="vc-defect-summary__item" data-severity="medium">
+                            <span class="vc-status-dot vc-status-dot--info" aria-hidden="true"></span>
+                            <span class="vc-defect-summary__label">Medium</span>
+                            <span class="vc-defect-summary__value" id="vc-defect-medium-value">--</span>
+                        </li>
+                        <li class="vc-defect-summary__item" data-severity="low">
+                            <span class="vc-status-dot vc-status-dot--success" aria-hidden="true"></span>
+                            <span class="vc-defect-summary__label">Low</span>
+                            <span class="vc-defect-summary__value" id="vc-defect-low-value">--</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer id="vc-footer" class="vc-footer" role="contentinfo">
+        <p class="vc-footer__text">
+            &copy; <span id="vc-footer-year">2026</span> VigCraft Testing Hub. All rights reserved.
+        </p>
+        <nav class="vc-footer__links" aria-label="Footer navigation">
+            <a href="/docs" id="vc-footer-docs">Documentation</a>
+            <a href="/support" id="vc-footer-support">Support</a>
+            <a href="/privacy" id="vc-footer-privacy">Privacy Policy</a>
+            <a href="/terms" id="vc-footer-terms">Terms of Service</a>
+        </nav>
+        <p class="vc-footer__version" id="vc-footer-version">v1.0.0</p>
+    </footer>
+
+    <script src="/frontend/dashboard/dashboard.js" defer></script>
+</body>
+</html>
