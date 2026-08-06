@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | VigCraft Testing Hub</title>
+  <meta name="description" content="Create your VigCraft Testing Hub account to manage manual testing, API testing, database validation, and Playwright automation in one workspace.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../css/register.css">
+</head>
+<body class="auth-page">
+
+  <a class="skip-link" href="#register-form">Skip to registration form</a>
+
+  <div class="auth-layout">
+
+    <!-- Brand / Welcome Panel -->
+    <section class="auth-panel auth-panel--welcome" aria-labelledby="welcome-heading">
+      <div class="auth-panel__inner">
+
+        <header class="auth-panel__header">
+          <a class="auth-brand" href="../index.html">
+            <img
+              src="../assets/vigcraft-logo.svg"
+              alt="VigCraft Testing Hub"
+              class="auth-brand__logo"
+              width="180"
+              height="40"
+            >
+          </a>
+        </header>
+
+        <h1 id="welcome-heading" class="auth-welcome__heading">
+          Start testing smarter with VigCraft
+        </h1>
+        <p class="auth-welcome__text">
+          Create your account to bring manual testing, API testing, database validation, and Playwright automation into one connected workspace.
+        </p>
+
+        <ul class="auth-welcome__highlights" role="list">
+          <li>Unified test case management</li>
+          <li>API &amp; database validation built in</li>
+          <li>Playwright automation, ready to run</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Register Panel -->
+    <section class="auth-panel auth-panel--form" aria-labelledby="register-heading">
+      <div class="auth-panel__inner">
+
+        <div class="auth-form-header">
+          <h2 id="register-heading" class="auth-form-header__heading">Create your account</h2>
+          <p class="auth-form-header__subtext">It only takes a minute to get your workspace set up.</p>
+        </div>
+
+        <div id="form-alert" class="form-alert" role="alert" aria-live="assertive"></div>
+
+        <form id="register-form" class="auth-form" novalidate>
+
+          <!-- Full Name -->
+          <div class="form-field">
+            <label for="fullName" class="form-field__label">Full name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              class="form-field__input"
+              placeholder="Jane Doe"
+              autocomplete="name"
+              maxlength="100"
+              required
+              aria-required="true"
+              aria-describedby="fullName-error"
+            >
+            <p id="fullName-error" class="field-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-field">
+            <label for="email" class="form-field__label">Work email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-field__input"
+              placeholder="you@company.com"
+              autocomplete="email"
+              inputmode="email"
+              maxlength="254"
+              autocapitalize="off"
+              spellcheck="false"
+              required
+              aria-required="true"
+              aria-describedby="email-error"
+            >
+            <p id="email-error" class="field-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <!-- Password -->
+          <div class="form-field">
+            <label for="password" class="form-field__label">Password</label>
+            <div class="form-field__input-group">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-field__input"
+                placeholder="Create a password"
+                autocomplete="new-password"
+                maxlength="128"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+                aria-required="true"
+                aria-describedby="password-hint password-error"
+              >
+              <button
+                type="button"
+                id="toggle-password"
+                class="form-field__toggle-visibility"
+                aria-pressed="false"
+                aria-label="Show password"
+              >Show</button>
+            </div>
+            <p id="password-hint" class="field-hint">Use 8+ characters with an uppercase letter, a lowercase letter, and a number.</p>
+            <p id="password-error" class="field-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-field">
+            <label for="confirmPassword" class="form-field__label">Confirm password</label>
+            <div class="form-field__input-group">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                class="form-field__input"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                maxlength="128"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+                aria-required="true"
+                aria-describedby="confirmPassword-error"
+              >
+              <button
+                type="button"
+                id="toggle-confirm-password"
+                class="form-field__toggle-visibility"
+                aria-pressed="false"
+                aria-label="Show confirm password"
+              >Show</button>
+            </div>
+            <p id="confirmPassword-error" class="field-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <!-- Terms & Conditions -->
+          <div class="form-field">
+            <label class="form-checkbox">
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                class="form-checkbox__input"
+                required
+                aria-required="true"
+                aria-describedby="terms-error"
+              >
+              <span class="form-checkbox__label">
+                I agree to the <a href="../terms.html" class="auth-form__link">Terms of Service</a> and <a href="../privacy.html" class="auth-form__link">Privacy Policy</a>
+              </span>
+            </label>
+            <p id="terms-error" class="field-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" id="register-submit" class="btn btn--primary auth-form__submit">Create account</button>
+        </form>
+
+        <p class="auth-form-footer">
+          Already have an account?
+          <a href="./login.html" class="auth-form__link auth-form__link--strong">Sign in</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Script -->
+  <script src="../js/register.js" defer></script>
+</body>
+</html>
