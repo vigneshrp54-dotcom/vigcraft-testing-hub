@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | VigCraft Testing Hub</title>
+  <link rel="stylesheet" href="projects.css">
+</head>
+<body class="app">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="app-header">
+    <div class="app-header__left">
+      <button type="button" class="app-header__menu-toggle" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="app-sidebar">
+        <span class="icon icon-menu" aria-hidden="true"></span>
+      </button>
+      <a href="/dashboard" class="app-header__logo">
+        <span class="app-header__logo-text">VigCraft</span>
+      </a>
+    </div>
+
+    <div class="app-header__center">
+      <div class="header-search">
+        <label for="global-search" class="sr-only">Global search</label>
+        <span class="icon icon-search header-search__icon" aria-hidden="true"></span>
+        <input type="search" id="global-search" name="global-search" class="header-search__input" placeholder="Search anything...">
+      </div>
+    </div>
+
+    <div class="app-header__right">
+      <button type="button" class="app-header__icon-btn" aria-label="Notifications">
+        <span class="icon icon-bell" aria-hidden="true"></span>
+        <span class="badge badge--dot" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="app-header__icon-btn" aria-label="Settings">
+        <span class="icon icon-settings" aria-hidden="true"></span>
+      </button>
+      <div class="app-header__user">
+        <button type="button" class="app-header__user-btn" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/images/avatar-placeholder.png" alt="" class="avatar avatar--sm">
+          <span class="app-header__user-name">User Name</span>
+          <span class="icon icon-chevron-down" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-body">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="app-sidebar" id="app-sidebar" aria-label="Primary navigation">
+      <nav class="sidebar-nav">
+        <ul class="sidebar-nav__list">
+          <li class="sidebar-nav__item">
+            <a href="/dashboard" class="sidebar-nav__link">
+              <span class="icon icon-dashboard" aria-hidden="true"></span>
+              <span class="sidebar-nav__label">Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-nav__item is-active">
+            <a href="/projects" class="sidebar-nav__link" aria-current="page">
+              <span class="icon icon-folder" aria-hidden="true"></span>
+              <span class="sidebar-nav__label">Projects</span>
+            </a>
+          </li>
+          <li class="sidebar-nav__item">
+            <a href="/test-cases" class="sidebar-nav__link">
+              <span class="icon icon-check-square" aria-hidden="true"></span>
+              <span class="sidebar-nav__label">Test Cases</span>
+            </a>
+          </li>
+          <li class="sidebar-nav__item">
+            <a href="/reports" class="sidebar-nav__link">
+              <span class="icon icon-bar-chart" aria-hidden="true"></span>
+              <span class="sidebar-nav__label">Reports</span>
+            </a>
+          </li>
+          <li class="sidebar-nav__item">
+            <a href="/team" class="sidebar-nav__link">
+              <span class="icon icon-users" aria-hidden="true"></span>
+              <span class="sidebar-nav__label">Team</span>
+            </a>
+          </li>
+          <li class="sidebar-nav__item">
+            <a href="/settings" class="sidebar-nav__link">
+              <span class="icon icon-settings" aria-hidden="true"></span>
+              <span class="sidebar-nav__label">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="app-main" id="main-content">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item"><a href="/dashboard" class="breadcrumb__link">Home</a></li>
+          <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">Projects</li>
+        </ol>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header__titles">
+          <h1 class="page-header__title">Projects</h1>
+          <p class="page-header__subtitle">Manage and track all your testing projects in one place.</p>
+        </div>
+        <div class="page-header__actions">
+          <button type="button" class="btn btn--primary" data-modal-target="create-project-modal">
+            <span class="icon icon-plus" aria-hidden="true"></span>
+            <span>New Project</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Project Statistics Cards -->
+      <section class="stats-grid" aria-label="Project statistics">
+        <div class="stat-card">
+          <div class="stat-card__icon-wrap stat-card__icon-wrap--total">
+            <span class="icon icon-folder" aria-hidden="true"></span>
+          </div>
+          <div class="stat-card__content">
+            <p class="stat-card__label">Total Projects</p>
+            <p class="stat-card__value">128</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon-wrap stat-card__icon-wrap--active">
+            <span class="icon icon-activity" aria-hidden="true"></span>
+          </div>
+          <div class="stat-card__content">
+            <p class="stat-card__label">Active Projects</p>
+            <p class="stat-card__value">64</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon-wrap stat-card__icon-wrap--completed">
+            <span class="icon icon-check-circle" aria-hidden="true"></span>
+          </div>
+          <div class="stat-card__content">
+            <p class="stat-card__label">Completed Projects</p>
+            <p class="stat-card__value">48</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__icon-wrap stat-card__icon-wrap--archived">
+            <span class="icon icon-archive" aria-hidden="true"></span>
+          </div>
+          <div class="stat-card__content">
+            <p class="stat-card__label">Archived Projects</p>
+            <p class="stat-card__value">16</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Toolbar: Search / Filters -->
+      <section class="toolbar" aria-label="Project filters">
+        <div class="toolbar__search">
+          <label for="project-search" class="sr-only">Search projects</label>
+          <span class="icon icon-search toolbar__search-icon" aria-hidden="true"></span>
+          <input type="search" id="project-search" name="project-search" class="toolbar__search-input" placeholder="Search projects by name, client, or owner...">
+        </div>
+
+        <div class="toolbar__filters">
+          <div class="form-group form-group--inline">
+            <label for="filter-type" class="sr-only">Filter by type</label>
+            <select id="filter-type" name="filter-type" class="select select--sm">
+              <option value="">All Types</option>
+              <option value="web">Web Application</option>
+              <option value="mobile">Mobile Application</option>
+              <option value="api">API / Backend</option>
+              <option value="desktop">Desktop</option>
+            </select>
+          </div>
+
+          <div class="form-group form-group--inline">
+            <label for="filter-status" class="sr-only">Filter by status</label>
+            <select id="filter-status" name="filter-status" class="select select--sm">
+              <option value="">All Statuses</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+              <option value="on-hold">On Hold</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn btn--secondary btn--sm">
+            <span class="icon icon-filter" aria-hidden="true"></span>
+            <span>More Filters</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Projects Table Card -->
+      <section class="card table-card" aria-label="Projects list">
+
+        <!-- Loading Skeleton State -->
+        <div class="table-skeleton" data-state="loading" hidden>
+          <div class="table-skeleton__row">
+            <div class="skeleton skeleton--text skeleton--w-lg"></div>
+            <div class="skeleton skeleton--text skeleton--w-md"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--pill"></div>
+            <div class="skeleton skeleton--text skeleton--w-md"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--actions"></div>
+          </div>
+          <div class="table-skeleton__row">
+            <div class="skeleton skeleton--text skeleton--w-lg"></div>
+            <div class="skeleton skeleton--text skeleton--w-md"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--pill"></div>
+            <div class="skeleton skeleton--text skeleton--w-md"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--actions"></div>
+          </div>
+          <div class="table-skeleton__row">
+            <div class="skeleton skeleton--text skeleton--w-lg"></div>
+            <div class="skeleton skeleton--text skeleton--w-md"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--pill"></div>
+            <div class="skeleton skeleton--text skeleton--w-md"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--text skeleton--w-sm"></div>
+            <div class="skeleton skeleton--actions"></div>
+          </div>
+        </div>
+
+        <!-- Responsive Project Table -->
+        <div class="table-responsive" data-state="loaded">
+          <table class="data-table" id="projects-table">
+            <caption class="sr-only">List of projects with client, owner, status, and progress details</caption>
+            <thead class="data-table__head">
+              <tr>
+                <th scope="col" class="data-table__th">
+                  <button type="button" class="data-table__sort-btn">
+                    Project Name
+                    <span class="icon icon-arrow-up-down" aria-hidden="true"></span>
+                  </button>
+                </th>
+                <th scope="col" class="data-table__th">Client</th>
+                <th scope="col" class="data-table__th">Project Type</th>
+                <th scope="col" class="data-table__th">Owner</th>
+                <th scope="col" class="data-table__th">Status</th>
+                <th scope="col" class="data-table__th">Progress</th>
+                <th scope="col" class="data-table__th">Created Date</th>
+                <th scope="col" class="data-table__th">Last Updated</th>
+                <th scope="col" class="data-table__th data-table__th--actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="data-table__body">
+              <tr class="data-table__row">
+                <td class="data-table__td" data-label="Project Name">
+                  <div class="table-cell-primary">
+                    <span class="table-cell-primary__title">Vigcraft E-Commerce QA</span>
+                    <span class="table-cell-primary__subtitle">PRJ-1042</span>
+                  </div>
+                </td>
+                <td class="data-table__td" data-label="Client">Nova Retail Group</td>
+                <td class="data-table__td" data-label="Project Type">Web Application</td>
+                <td class="data-table__td" data-label="Owner">
+                  <div class="table-owner">
+                    <img src="/assets/images/avatar-placeholder.png" alt="" class="avatar avatar--xs">
+                    <span>Asha Menon</span>
+                  </div>
+                </td>
+                <td class="data-table__td" data-label="Status">
+                  <span class="status-badge status-badge--active">Active</span>
+                </td>
+                <td class="data-table__td" data-label="Progress">
+                  <div class="progress-bar" role="progressbar" aria-label="Project completion progress" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar__fill" style="width:72%"></div>
+                  </div>
+                  <span class="progress-bar__label">72%</span>
+                </td>
+                <td class="data-table__td" data-label="Created Date">Jan 12, 2026</td>
+                <td class="data-table__td" data-label="Last Updated">Aug 05, 2026</td>
+                <td class="data-table__td data-table__td--actions" data-label="Actions">
+                  <div class="table-actions">
+                    <button type="button" class="table-actions__btn" data-action="view" aria-label="View project">
+                      <span class="icon icon-eye" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="table-actions__btn" data-action="edit" aria-label="Edit project">
+                      <span class="icon icon-edit" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="table-actions__btn table-actions__btn--danger" data-action="delete" data-modal-target="delete-confirm-modal" aria-label="Delete project">
+                      <span class="icon icon-trash" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="data-table__row">
+                <td class="data-table__td" data-label="Project Name">
+                  <div class="table-cell-primary">
+                    <span class="table-cell-primary__title">Mobile Banking Regression Suite</span>
+                    <span class="table-cell-primary__subtitle">PRJ-1039</span>
+                  </div>
+                </td>
+                <td class="data-table__td" data-label="Client">Meridian Bank</td>
+                <td class="data-table__td" data-label="Project Type">Mobile Application</td>
+                <td class="data-table__td" data-label="Owner">
+                  <div class="table-owner">
+                    <img src="/assets/images/avatar-placeholder.png" alt="" class="avatar avatar--xs">
+                    <span>Rahul Verma</span>
+                  </div>
+                </td>
+                <td class="data-table__td" data-label="Status">
+                  <span class="status-badge status-badge--on-hold">On Hold</span>
+                </td>
+                <td class="data-table__td" data-label="Progress">
+                  <div class="progress-bar" role="progressbar" aria-label="Project completion progress" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar__fill" style="width:35%"></div>
+                  </div>
+                  <span class="progress-bar__label">35%</span>
+                </td>
+                <td class="data-table__td" data-label="Created Date">Nov 02, 2025</td>
+                <td class="data-table__td" data-label="Last Updated">Jul 28, 2026</td>
+                <td class="data-table__td data-table__td--actions" data-label="Actions">
+                  <div class="table-actions">
+                    <button type="button" class="table-actions__btn" data-action="view" aria-label="View project">
+                      <span class="icon icon-eye" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="table-actions__btn" data-action="edit" aria-label="Edit project">
+                      <span class="icon icon-edit" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="table-actions__btn table-actions__btn--danger" data-action="delete" data-modal-target="delete-confirm-modal" aria-label="Delete project">
+                      <span class="icon icon-trash" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="data-table__row">
+                <td class="data-table__td" data-label="Project Name">
+                  <div class="table-cell-primary">
+                    <span class="table-cell-primary__title">API Gateway Load Testing</span>
+                    <span class="table-cell-primary__subtitle">PRJ-0987</span>
+                  </div>
+                </td>
+                <td class="data-table__td" data-label="Client">CloudSphere Inc.</td>
+                <td class="data-table__td" data-label="Project Type">API / Backend</td>
+                <td class="data-table__td" data-label="Owner">
+                  <div class="table-owner">
+                    <img src="/assets/images/avatar-placeholder.png" alt="" class="avatar avatar--xs">
+                    <span>Emily Chen</span>
+                  </div>
+                </td>
+                <td class="data-table__td" data-label="Status">
+                  <span class="status-badge status-badge--completed">Completed</span>
+                </td>
+                <td class="data-table__td" data-label="Progress">
+                  <div class="progress-bar" role="progressbar" aria-label="Project completion progress" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar__fill" style="width:100%"></div>
+                  </div>
+                  <span class="progress-bar__label">100%</span>
+                </td>
+                <td class="data-table__td" data-label="Created Date">Mar 18, 2025</td>
+                <td class="data-table__td" data-label="Last Updated">Jun 09, 2026</td>
+                <td class="data-table__td data-table__td--actions" data-label="Actions">
+                  <div class="table-actions">
+                    <button type="button" class="table-actions__btn" data-action="view" aria-label="View project">
+                      <span class="icon icon-eye" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="table-actions__btn" data-action="edit" aria-label="Edit project">
+                      <span class="icon icon-edit" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="table-actions__btn table-actions__btn--danger" data-action="delete" data-modal-target="delete-confirm-modal" aria-label="Delete project">
+                      <span class="icon icon-trash" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="data-table__row">
+                <td class="data-table__td" data-label="Project Name">
+                  <div class="table-cell-primary">
+                    <span class="table-cell-primary__title">Legacy CRM Archive Audit</span>
+                    <span class="table-cell-primary__subtitle">PRJ-0654</span>
+                  </div>
+                </td>
+                <td class="data-table__td" data-label="Client">Orbit Systems</td>
+                <td class="data-table__td" data-label="Project Type">Desktop</td>
+                <td class="data-table__td" data-label="Owner">
+                  <div class="table-owner">
+                    <img src="/assets/images/avatar-placeholder.png" alt="" class="avatar avatar--xs">
+                    <span>David Okafor</span>
+                  </div>
+                </td>
+                <td class="data-table__td" data-label="Status">
+                  <span class="status-badge status-badge--archived">Archived</span>
+                </td>
+                <td class="data-table__td" data-label="Progress">
+                  <div class="progress-bar" role="progressbar" aria-label="Project completion progress" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar__fill" style="width:100%"></div>
+                  </div>
+                  <span class="progress-bar__label">100%</span>
+                </td>
+                <td class="data-table__td" data-label="Created Date">Jul 21, 2024</td>
+                <td class="data-table__td" data-label="Last Updated">Jan 15, 2026</td>
+                <td class="data-table__td data-table__td--actions" data-label="Actions">
+                  <div class="table-actions">
+                    <button type="button" class="table-actions__btn" data-action="view" aria-label="View project">
+                      <span class="icon icon-eye" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="table-actions__btn" data-action="edit" aria-label="Edit project">
+                      <span class="icon icon-edit" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="table-actions__btn table-actions__btn--danger" data-action="delete" data-modal-target="delete-confirm-modal" aria-label="Delete project">
+                      <span class="icon icon-trash" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty State (no projects exist at all) -->
+        <div class="empty-state" data-state="empty" hidden>
+          <div class="empty-state__icon">
+            <span class="icon icon-folder-open" aria-hidden="true"></span>
+          </div>
+          <h2 class="empty-state__title">No projects yet</h2>
+          <p class="empty-state__description">Get started by creating your first testing project.</p>
+          <button type="button" class="btn btn--primary" data-modal-target="create-project-modal">
+            <span class="icon icon-plus" aria-hidden="true"></span>
+            <span>New Project</span>
+          </button>
+        </div>
+
+        <!-- No Results State (search/filter returned nothing) -->
+        <div class="empty-state empty-state--no-results" data-state="no-results" hidden>
+          <div class="empty-state__icon">
+            <span class="icon icon-search-x" aria-hidden="true"></span>
+          </div>
+          <h2 class="empty-state__title">No matching projects found</h2>
+          <p class="empty-state__description">Try adjusting your search or filter criteria.</p>
+          <button type="button" class="btn btn--secondary" id="clear-filters-btn">
+            <span>Clear Filters</span>
+          </button>
+        </div>
+
+        <!-- Table Footer / Pagination -->
+        <div class="table-footer">
+          <p class="table-footer__summary">Showing <strong>1–4</strong> of <strong>128</strong> projects</p>
+          <nav class="pagination" aria-label="Table pagination">
+            <button type="button" class="pagination__btn" disabled aria-label="Previous page">
+              <span class="icon icon-chevron-left" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="pagination__btn is-active" aria-current="page">1</button>
+            <button type="button" class="pagination__btn">2</button>
+            <button type="button" class="pagination__btn">3</button>
+            <span class="pagination__ellipsis">…</span>
+            <button type="button" class="pagination__btn">32</button>
+            <button type="button" class="pagination__btn" aria-label="Next page">
+              <span class="icon icon-chevron-right" aria-hidden="true"></span>
+            </button>
+          </nav>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="app-footer">
+    <p class="app-footer__text">&copy; 2026 VigCraft Testing Hub. All rights reserved.</p>
+    <ul class="app-footer__links">
+      <li><a href="/privacy" class="app-footer__link">Privacy Policy</a></li>
+      <li><a href="/terms" class="app-footer__link">Terms of Service</a></li>
+      <li><a href="/support" class="app-footer__link">Support</a></li>
+    </ul>
+  </footer>
+
+  <!-- ============ DELETE CONFIRMATION MODAL ============ -->
+  <div class="modal" id="delete-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="delete-confirm-title" hidden>
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__dialog modal__dialog--sm">
+      <div class="modal__header">
+        <h2 class="modal__title" id="delete-confirm-title">Delete Project</h2>
+        <button type="button" class="modal__close-btn" data-modal-close aria-label="Close dialog">
+          <span class="icon icon-x" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal__body">
+        <p class="modal__text">
+          Are you sure you want to delete this project? This action cannot be undone and all associated test cases and reports will be permanently removed.
+        </p>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn--danger">
+          <span class="icon icon-trash" aria-hidden="true"></span>
+          <span>Delete Project</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CREATE PROJECT MODAL ============ -->
+  <div class="modal" id="create-project-modal" role="dialog" aria-modal="true" aria-labelledby="create-project-title" hidden>
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__dialog modal__dialog--lg">
+      <div class="modal__header">
+        <h2 class="modal__title" id="create-project-title">Create New Project</h2>
+        <button type="button" class="modal__close-btn" data-modal-close aria-label="Close dialog">
+          <span class="icon icon-x" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal__body">
+        <form class="form" id="create-project-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="new-project-name" class="form-label">Project Name</label>
+              <input type="text" id="new-project-name" name="project-name" class="input" placeholder="e.g. Vigcraft E-Commerce QA" required>
+            </div>
+            <div class="form-group">
+              <label for="new-project-client" class="form-label">Client</label>
+              <input type="text" id="new-project-client" name="project-client" class="input" placeholder="e.g. Nova Retail Group" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="new-project-type" class="form-label">Project Type</label>
+              <select id="new-project-type" name="project-type" class="select" required>
+                <option value="" disabled selected>Select project type</option>
+                <option value="web">Web Application</option>
+                <option value="mobile">Mobile Application</option>
+                <option value="api">API / Backend</option>
+                <option value="desktop">Desktop</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="new-project-owner" class="form-label">Owner</label>
+              <select id="new-project-owner" name="project-owner" class="select" required>
+                <option value="" disabled selected>Select owner</option>
+                <option value="asha-menon">Asha Menon</option>
+                <option value="rahul-verma">Rahul Verma</option>
+                <option value="emily-chen">Emily Chen</option>
+                <option value="david-okafor">David Okafor</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="new-project-status" class="form-label">Status</label>
+              <select id="new-project-status" name="project-status" class="select" required>
+                <option value="active" selected>Active</option>
+                <option value="on-hold">On Hold</option>
+                <option value="completed">Completed</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="new-project-due-date" class="form-label">Due Date</label>
+              <input type="date" id="new-project-due-date" name="project-due-date" class="input">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="new-project-description" class="form-label">Description</label>
+            <textarea id="new-project-description" name="project-description" class="textarea" rows="4" placeholder="Brief summary of the project scope..."></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+        <button type="submit" form="create-project-form" class="btn btn--primary">
+          <span class="icon icon-plus" aria-hidden="true"></span>
+          <span>Create Project</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="projects.js" defer></script>
+</body>
+</html>
