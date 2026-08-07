@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Suites | VigCraft Testing Hub</title>
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/vc-tokens.css">
+  <link rel="stylesheet" href="/assets/css/vc-base.css">
+  <link rel="stylesheet" href="/assets/css/vc-layout.css">
+  <link rel="stylesheet" href="/assets/css/vc-components.css">
+  <link rel="stylesheet" href="/assets/css/vc-test-suites.css">
+</head>
+<body class="vc-body">
+
+  <div class="vc-app">
+
+    <!-- ============================= -->
+    <!-- SIDEBAR (Reused Component)     -->
+    <!-- ============================= -->
+    <aside class="vc-sidebar" id="vc-sidebar" aria-label="Primary Navigation">
+      <div class="vc-sidebar__brand">
+        <img class="vc-sidebar__logo" src="/assets/images/logo.svg" alt="">
+        <span class="vc-sidebar__brand-name">VigCraft</span>
+      </div>
+
+      <nav class="vc-sidebar__nav" aria-label="Modules">
+        <ul class="vc-sidebar__list">
+          <li class="vc-sidebar__item">
+            <a class="vc-sidebar__link" href="/frontend/dashboard/dashboard.html">
+              <span class="vc-icon vc-icon-dashboard" aria-hidden="true"></span>
+              <span class="vc-sidebar__label">Dashboard</span>
+            </a>
+          </li>
+          <li class="vc-sidebar__item">
+            <a class="vc-sidebar__link" href="/frontend/projects/projects.html">
+              <span class="vc-icon vc-icon-projects" aria-hidden="true"></span>
+              <span class="vc-sidebar__label">Projects</span>
+            </a>
+          </li>
+          <li class="vc-sidebar__item vc-sidebar__item--active">
+            <a class="vc-sidebar__link" href="/frontend/test-suites/test-suites.html" aria-current="page">
+              <span class="vc-icon vc-icon-test-suites" aria-hidden="true"></span>
+              <span class="vc-sidebar__label">Test Suites</span>
+            </a>
+          </li>
+          <li class="vc-sidebar__item">
+            <a class="vc-sidebar__link" href="/frontend/test-cases/test-cases.html">
+              <span class="vc-icon vc-icon-test-cases" aria-hidden="true"></span>
+              <span class="vc-sidebar__label">Test Cases</span>
+            </a>
+          </li>
+          <li class="vc-sidebar__item">
+            <a class="vc-sidebar__link" href="/frontend/executions/executions.html">
+              <span class="vc-icon vc-icon-executions" aria-hidden="true"></span>
+              <span class="vc-sidebar__label">Executions</span>
+            </a>
+          </li>
+          <li class="vc-sidebar__item">
+            <a class="vc-sidebar__link" href="/frontend/reports/reports.html">
+              <span class="vc-icon vc-icon-reports" aria-hidden="true"></span>
+              <span class="vc-sidebar__label">Reports</span>
+            </a>
+          </li>
+          <li class="vc-sidebar__item">
+            <a class="vc-sidebar__link" href="/frontend/settings/settings.html">
+              <span class="vc-icon vc-icon-settings" aria-hidden="true"></span>
+              <span class="vc-sidebar__label">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button type="button" class="vc-sidebar__collapse-btn" id="vc-sidebar-toggle" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="vc-sidebar">
+        <span class="vc-icon vc-icon-collapse" aria-hidden="true"></span>
+      </button>
+    </aside>
+
+    <div class="vc-app__body">
+
+      <!-- ============================= -->
+      <!-- HEADER (Reused Component)      -->
+      <!-- ============================= -->
+      <header class="vc-header" role="banner">
+        <button type="button" class="vc-header__menu-toggle" id="vc-mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="vc-sidebar">
+          <span class="vc-icon vc-icon-menu" aria-hidden="true"></span>
+        </button>
+
+        <div class="vc-header__search">
+          <label class="vc-visually-hidden" for="vc-global-search">Global Search</label>
+          <span class="vc-icon vc-icon-search" aria-hidden="true"></span>
+          <input class="vc-header__search-input" type="search" id="vc-global-search" name="vc-global-search" placeholder="Search across VigCraft...">
+        </div>
+
+        <div class="vc-header__actions">
+          <button type="button" class="vc-header__icon-btn" aria-label="Notifications">
+            <span class="vc-icon vc-icon-bell" aria-hidden="true"></span>
+            <span class="vc-badge vc-badge--dot" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="vc-header__icon-btn" aria-label="Help center">
+            <span class="vc-icon vc-icon-help" aria-hidden="true"></span>
+          </button>
+
+          <div class="vc-header__divider" aria-hidden="true"></div>
+
+          <button type="button" class="vc-header__user" id="vc-user-menu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="vc-user-menu">
+            <img class="vc-header__avatar" src="/assets/images/avatar-placeholder.png" alt="">
+            <span class="vc-header__username">Account</span>
+            <span class="vc-icon vc-icon-chevron-down" aria-hidden="true"></span>
+          </button>
+          <ul class="vc-header__user-menu" id="vc-user-menu" role="menu" hidden>
+            <li role="none"><a role="menuitem" href="/frontend/profile/profile.html">My Profile</a></li>
+            <li role="none"><a role="menuitem" href="/frontend/settings/settings.html">Settings</a></li>
+            <li role="none"><a role="menuitem" href="/logout">Sign Out</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <!-- ============================= -->
+      <!-- MAIN CONTENT                   -->
+      <!-- ============================= -->
+      <main class="vc-main" id="vc-main-content">
+
+        <!-- Breadcrumb Navigation -->
+        <nav class="vc-breadcrumb" aria-label="Breadcrumb">
+          <ol class="vc-breadcrumb__list">
+            <li class="vc-breadcrumb__item">
+              <a class="vc-breadcrumb__link" href="/frontend/dashboard/dashboard.html">Dashboard</a>
+            </li>
+            <li class="vc-breadcrumb__item" aria-current="page">
+              <span class="vc-breadcrumb__current">Test Suites</span>
+            </li>
+          </ol>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="vc-page-header">
+          <div class="vc-page-header__titles">
+            <h1 class="vc-page-header__title">Test Suites</h1>
+            <p class="vc-page-header__subtitle">Organize, manage, and execute your test suites across all projects.</p>
+          </div>
+          <div class="vc-page-header__actions">
+            <button type="button" class="vc-btn vc-btn--primary" id="vc-new-suite-btn" data-modal-target="vc-create-suite-modal">
+              <span class="vc-icon vc-icon-plus" aria-hidden="true"></span>
+              <span>New Test Suite</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ============================= -->
+        <!-- STATISTICS CARDS               -->
+        <!-- ============================= -->
+        <section class="vc-stats-grid" aria-label="Test Suite Statistics">
+          <article class="vc-stat-card">
+            <div class="vc-stat-card__icon vc-stat-card__icon--total" aria-hidden="true">
+              <span class="vc-icon vc-icon-layers"></span>
+            </div>
+            <div class="vc-stat-card__body">
+              <span class="vc-stat-card__label">Total Test Suites</span>
+              <span class="vc-stat-card__value" data-stat="total-suites">0</span>
+            </div>
+          </article>
+
+          <article class="vc-stat-card">
+            <div class="vc-stat-card__icon vc-stat-card__icon--active" aria-hidden="true">
+              <span class="vc-icon vc-icon-activity"></span>
+            </div>
+            <div class="vc-stat-card__body">
+              <span class="vc-stat-card__label">Active Test Suites</span>
+              <span class="vc-stat-card__value" data-stat="active-suites">0</span>
+            </div>
+          </article>
+
+          <article class="vc-stat-card">
+            <div class="vc-stat-card__icon vc-stat-card__icon--completed" aria-hidden="true">
+              <span class="vc-icon vc-icon-check-circle"></span>
+            </div>
+            <div class="vc-stat-card__body">
+              <span class="vc-stat-card__label">Completed Test Suites</span>
+              <span class="vc-stat-card__value" data-stat="completed-suites">0</span>
+            </div>
+          </article>
+
+          <article class="vc-stat-card">
+            <div class="vc-stat-card__icon vc-stat-card__icon--draft" aria-hidden="true">
+              <span class="vc-icon vc-icon-file-edit"></span>
+            </div>
+            <div class="vc-stat-card__body">
+              <span class="vc-stat-card__label">Draft Test Suites</span>
+              <span class="vc-stat-card__value" data-stat="draft-suites">0</span>
+            </div>
+          </article>
+        </section>
+
+        <!-- ============================= -->
+        <!-- TOOLBAR: SEARCH & FILTERS      -->
+        <!-- ============================= -->
+        <section class="vc-toolbar" aria-label="Test Suite Filters">
+          <div class="vc-toolbar__search">
+            <label class="vc-visually-hidden" for="vc-suite-search">Search test suites</label>
+            <span class="vc-icon vc-icon-search" aria-hidden="true"></span>
+            <input class="vc-toolbar__search-input" type="search" id="vc-suite-search" name="vc-suite-search" placeholder="Search test suites by name...">
+          </div>
+
+          <div class="vc-toolbar__filters">
+            <div class="vc-form-group vc-form-group--inline">
+              <label class="vc-visually-hidden" for="vc-project-filter">Filter by project</label>
+              <select class="vc-select" id="vc-project-filter" name="vc-project-filter">
+                <option value="">All Projects</option>
+                <option value="vigcraft-core">VigCraft Core Platform</option>
+                <option value="payments-gateway">Payments Gateway</option>
+                <option value="mobile-app">Mobile App</option>
+                <option value="admin-console">Admin Console</option>
+              </select>
+            </div>
+
+            <div class="vc-form-group vc-form-group--inline">
+              <label class="vc-visually-hidden" for="vc-status-filter">Filter by status</label>
+              <select class="vc-select" id="vc-status-filter" name="vc-status-filter">
+                <option value="">All Statuses</option>
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+
+            <button type="button" class="vc-btn vc-btn--ghost" id="vc-clear-filters-btn">
+              <span class="vc-icon vc-icon-x-circle" aria-hidden="true"></span>
+              <span>Clear Filters</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ============================= -->
+        <!-- TABLE CARD                     -->
+        <!-- ============================= -->
+        <section class="vc-card vc-table-card" aria-label="Test Suites Table">
+
+          <!-- Loading Skeleton -->
+          <div class="vc-skeleton-wrapper" id="vc-table-skeleton" role="status" aria-live="polite">
+            <span class="vc-visually-hidden">Loading test suites…</span>
+            <div class="vc-skeleton vc-skeleton--row" aria-hidden="true"></div>
+            <div class="vc-skeleton vc-skeleton--row" aria-hidden="true"></div>
+            <div class="vc-skeleton vc-skeleton--row" aria-hidden="true"></div>
+            <div class="vc-skeleton vc-skeleton--row" aria-hidden="true"></div>
+            <div class="vc-skeleton vc-skeleton--row" aria-hidden="true"></div>
+          </div>
+
+          <div class="vc-table-responsive" hidden>
+            <table class="vc-table" id="vc-test-suites-table">
+              <caption class="vc-visually-hidden">List of test suites with project, execution status, pass rate, owner and actions</caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="vc-checkbox" id="vc-select-all-suites" aria-label="Select all test suites">
+                  </th>
+                  <th scope="col">Suite Name</th>
+                  <th scope="col">Project</th>
+                  <th scope="col">Total Test Cases</th>
+                  <th scope="col">Executed</th>
+                  <th scope="col">Pass Rate</th>
+                  <th scope="col">Owner</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Last Updated</th>
+                  <th scope="col" class="vc-table__actions-col">Actions</th>
+                </tr>
+              </thead>
+              <!-- Rows are rendered dynamically by test-suites.js -->
+              <tbody id="vc-test-suites-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- Empty State: no test suites exist at all -->
+          <div class="vc-empty-state" id="vc-empty-state" hidden>
+            <span class="vc-icon vc-icon-layers vc-empty-state__icon" aria-hidden="true"></span>
+            <h2 class="vc-empty-state__title">No test suites yet</h2>
+            <p class="vc-empty-state__description">Create your first test suite to start organizing test cases for your projects.</p>
+            <button type="button" class="vc-btn vc-btn--primary" data-modal-target="vc-create-suite-modal">
+              <span class="vc-icon vc-icon-plus" aria-hidden="true"></span>
+              <span>New Test Suite</span>
+            </button>
+          </div>
+
+          <!-- No Results State: filters/search return nothing -->
+          <div class="vc-empty-state vc-empty-state--no-results" id="vc-no-results-state" hidden>
+            <span class="vc-icon vc-icon-search vc-empty-state__icon" aria-hidden="true"></span>
+            <h2 class="vc-empty-state__title">No matching test suites</h2>
+            <p class="vc-empty-state__description">Try adjusting your search term or filters to find what you're looking for.</p>
+            <button type="button" class="vc-btn vc-btn--secondary" id="vc-reset-search-btn">
+              <span>Reset Search &amp; Filters</span>
+            </button>
+          </div>
+
+          <!-- Pagination -->
+          <div class="vc-pagination" aria-label="Table pagination" hidden>
+            <span class="vc-pagination__summary">Showing <strong>1–10</strong> of <strong>42</strong> test suites</span>
+            <div class="vc-pagination__controls">
+              <button type="button" class="vc-btn vc-btn--ghost vc-btn--sm" id="vc-prev-page-btn" disabled>Previous</button>
+              <ul class="vc-pagination__pages">
+                <li><button type="button" class="vc-pagination__page vc-pagination__page--active" aria-current="page">1</button></li>
+                <li><button type="button" class="vc-pagination__page">2</button></li>
+                <li><button type="button" class="vc-pagination__page">3</button></li>
+              </ul>
+              <button type="button" class="vc-btn vc-btn--ghost vc-btn--sm" id="vc-next-page-btn">Next</button>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+
+      <!-- ============================= -->
+      <!-- FOOTER (Reused Component)      -->
+      <!-- ============================= -->
+      <footer class="vc-footer">
+        <p class="vc-footer__copyright">&copy; 2026 VigCraft Testing Hub. All rights reserved.</p>
+        <nav class="vc-footer__links" aria-label="Footer">
+          <a href="/frontend/legal/privacy.html">Privacy Policy</a>
+          <a href="/frontend/legal/terms.html">Terms of Service</a>
+          <a href="/frontend/support/support.html">Support</a>
+        </nav>
+        <span class="vc-footer__version">v2.4.1</span>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- MODAL: CREATE TEST SUITE       -->
+  <!-- ============================= -->
+  <div class="vc-modal-overlay" id="vc-create-suite-modal" role="dialog" aria-modal="true" aria-labelledby="vc-create-suite-title" hidden>
+    <div class="vc-modal">
+      <header class="vc-modal__header">
+        <h2 class="vc-modal__title" id="vc-create-suite-title">Create New Test Suite</h2>
+        <button type="button" class="vc-modal__close-btn" data-modal-close aria-label="Close dialog">
+          <span class="vc-icon vc-icon-x" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <form class="vc-modal__body vc-form" id="vc-create-suite-form" novalidate>
+        <div class="vc-form-group">
+          <label class="vc-form-label" for="vc-suite-name">Suite Name <span class="vc-required" aria-hidden="true">*</span></label>
+          <input class="vc-input" type="text" id="vc-suite-name" name="suiteName" placeholder="e.g. Checkout Regression Suite" required>
+        </div>
+
+        <div class="vc-form-group">
+          <label class="vc-form-label" for="vc-suite-project">Project <span class="vc-required" aria-hidden="true">*</span></label>
+          <select class="vc-select" id="vc-suite-project" name="suiteProject" required>
+            <option value="" selected disabled>Select a project</option>
+            <option value="vigcraft-core">VigCraft Core Platform</option>
+            <option value="payments-gateway">Payments Gateway</option>
+            <option value="mobile-app">Mobile App</option>
+            <option value="admin-console">Admin Console</option>
+          </select>
+        </div>
+
+        <div class="vc-form-row">
+          <div class="vc-form-group">
+            <label class="vc-form-label" for="vc-suite-owner">Owner</label>
+            <select class="vc-select" id="vc-suite-owner" name="suiteOwner">
+              <option value="" selected disabled>Assign an owner</option>
+              <option value="ananya-rao">Ananya Rao</option>
+              <option value="karthik-subramanian">Karthik Subramanian</option>
+              <option value="priya-menon">Priya Menon</option>
+            </select>
+          </div>
+
+          <div class="vc-form-group">
+            <label class="vc-form-label" for="vc-suite-status">Initial Status</label>
+            <select class="vc-select" id="vc-suite-status" name="suiteStatus">
+              <option value="draft" selected>Draft</option>
+              <option value="active">Active</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="vc-form-group">
+          <label class="vc-form-label" for="vc-suite-description">Description</label>
+          <textarea class="vc-textarea" id="vc-suite-description" name="suiteDescription" rows="4" placeholder="Briefly describe the scope and purpose of this test suite..."></textarea>
+        </div>
+
+        <div class="vc-form-group">
+          <label class="vc-form-label" for="vc-suite-tags">Tags</label>
+          <input class="vc-input" type="text" id="vc-suite-tags" name="suiteTags" placeholder="e.g. regression, smoke, api">
+        </div>
+      </form>
+
+      <footer class="vc-modal__footer">
+        <button type="button" class="vc-btn vc-btn--secondary" data-modal-close>Cancel</button>
+        <button type="submit" form="vc-create-suite-form" class="vc-btn vc-btn--primary" id="vc-create-suite-submit-btn">Create Test Suite</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- MODAL: DELETE CONFIRMATION     -->
+  <!-- ============================= -->
+  <div class="vc-modal-overlay" id="vc-delete-suite-modal" role="dialog" aria-modal="true" aria-labelledby="vc-delete-suite-title" hidden>
+    <div class="vc-modal vc-modal--sm">
+      <header class="vc-modal__header">
+        <h2 class="vc-modal__title" id="vc-delete-suite-title">Delete Test Suite</h2>
+        <button type="button" class="vc-modal__close-btn" data-modal-close aria-label="Close dialog">
+          <span class="vc-icon vc-icon-x" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <div class="vc-modal__body">
+        <div class="vc-alert vc-alert--danger">
+          <span class="vc-icon vc-icon-alert-triangle" aria-hidden="true"></span>
+          <p>This action is permanent and cannot be undone. All test cases and execution history linked to this suite will also be removed.</p>
+        </div>
+        <p class="vc-modal__confirm-text">
+          Are you sure you want to delete <strong id="vc-delete-suite-name">this test suite</strong>?
+        </p>
+      </div>
+
+      <footer class="vc-modal__footer">
+        <button type="button" class="vc-btn vc-btn--secondary" data-modal-close>Cancel</button>
+        <button type="button" class="vc-btn vc-btn--danger" id="vc-confirm-delete-suite-btn">Delete Test Suite</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/assets/js/vc-sidebar.js" defer></script>
+  <script src="/assets/js/vc-header.js" defer></script>
+  <script src="/assets/js/vc-modal.js" defer></script>
+  <script src="/assets/js/vc-test-suites.js" defer></script>
+</body>
+</html>
